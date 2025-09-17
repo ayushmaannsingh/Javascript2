@@ -1,0 +1,203 @@
+:root{
+  --bg: #0b0f14;
+  --card: #121821;
+  --text: #e6edf3;
+  --muted: #9aa7b5;
+  --accent: #6aa7ff;
+  --danger: #ff6b6b;
+  --ok: #3fcf8e;
+  --border: #223042;
+  --bar: #2b3a4d;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  height:100%;
+  background: linear-gradient(180deg, #0b0f14, #0e141c 40%, #0b0f14);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+}
+
+.container{
+  min-height:100%;
+  display:grid;
+  place-items:center;
+  padding: 2rem;
+}
+
+form{
+  width: 100%;
+  max-width: 420px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+h1{
+  margin: 0 0 1rem 0;
+  font-size: 1.4rem;
+  letter-spacing: .2px;
+}
+
+.field{
+  margin-bottom: 1.1rem;
+}
+
+label{
+  display:block;
+  font-size: .95rem;
+  margin-bottom: .45rem;
+}
+
+input{
+  width: 100%;
+  padding: .8rem .9rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0e141c;
+  color: var(--text);
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+input::placeholder{ color: #6b7785; }
+
+input:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+/* Password input with eye button */
+.password-wrap{
+  position: relative;
+}
+
+.toggle-visibility{
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: .25rem .5rem;
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+.toggle-visibility:focus{
+  outline: 2px solid var(--accent);
+}
+
+/* Strength meter */
+.strength{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .4rem;
+  margin: .6rem 0 .5rem;
+}
+
+.strength .bar{
+  height: .45rem;
+  background: var(--bar);
+  border-radius: 999px;
+  transition: background .2s ease, filter .2s ease;
+}
+
+/* Add .level-1..4 on .strength from JS */
+.strength.level-1 .bar[data-level="1"]{ background: var(--danger); }
+.strength.level-2 .bar[data-level="1"],
+.strength.level-2 .bar[data-level="2"]{ background: #f8a94b; }
+.strength.level-3 .bar[data-level="1"],
+.strength.level-3 .bar[data-level="2"],
+.strength.level-3 .bar[data-level="3"]{ background: #ffd166; filter: brightness(1.05); }
+.strength.level-4 .bar{ background: var(--ok); }
+
+/* Requirement checklist: toggle .ok or .bad */
+.reqs{
+  list-style: none;
+  padding-left: 0;
+  margin: .25rem 0 0;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.reqs li{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .25rem 0;
+}
+
+.reqs li::before{
+  content: "•";
+  font-weight: 700;
+  line-height: 1;
+}
+
+.reqs li.ok{
+  color: var(--ok);
+}
+.reqs li.ok::before{ content: "✓"; }
+.reqs li.bad{
+  color: var(--danger);
+}
+.reqs li.bad::before{ content: "✕"; }
+
+/* Error messages: add text from JS */
+.error{
+  min-height: 1.1em; /* reserve space to avoid layout shift */
+  margin: .35rem 0 0;
+  font-size: .9rem;
+  color: var(--danger);
+}
+
+/* Valid/invalid input states you can toggle via JS */
+input.valid{
+  border-color: var(--ok);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 25%, transparent);
+}
+input.invalid{
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 25%, transparent);
+}
+
+/* Submit button */
+button[type="submit"]{
+  width: 100%;
+  padding: .9rem 1rem;
+  border: 0;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #061221;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .06s ease, filter .15s ease, opacity .2s ease;
+  margin-top: .25rem;
+}
+
+button[type="submit"]:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+
+button[type="submit"]:active{
+  transform: translateY(1px);
+}
+
+.muted{
+  color: var(--muted);
+  font-size: .9rem;
+  margin-top: .6rem;
+  text-align: center;
+}
+
+/* Small screens */
+@media (max-width: 420px){
+  form{ padding: 1.25rem; border-radius: 14px; }
+}

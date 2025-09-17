@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download Simulation UI</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f1220;
+    color: #e8ecff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .card {
+    background: #151934;
+    padding: 20px;
+    border-radius: 16px;
+    width: 320px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+  h2 { margin: 0 0 5px; font-size: 18px; }
+  p { margin: 0 0 20px; color: #9aa4bf; font-size: 14px; }
+  .progress-container {
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    height: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+    transition: width 0.2s;
+  }
+  .status {
+    font-size: 14px;
+    color: #9aa4bf;
+    margin-bottom: 16px;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #1b2349;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button:hover { background: #2b355f; }
+  .done { color: #7dffa7; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Ayushfilm</h2>
+  <p>128 MB • Zip archive</p>
+  
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  
+  <div class="status" id="statusText">Idle</div>
+  <button id="downloadBtn">Download</button>
+</div>
+
+<script>
+const progressBar = document.getElementById('progressBar');
+const statusText = document.getElementById('statusText');
+const downloadBtn = document.getElementById('downloadBtn');
+
+let progress = 0;
+let interval = null;
+
+downloadBtn.addEventListener('click', () => {
+  progress = 0;
+  progressBar.style.width = '0%';
+  statusText.textContent = 'Starting download...';
+  downloadBtn.disabled = true;
+
+  interval = setInterval(() => {
+    progress += 5;
+    progressBar.style.width = progress + '%';
+    statusText.textContent = `Downloading... ${progress}%`;
+
+    if (progress >= 100) {
+      clearInterval(interval);
+      statusText.innerHTML = '<span class="done">✓ Complete</span>';
+      downloadBtn.disabled = false;
+      downloadBtn.textContent = 'Download Again';
+    }
+  }, 1000);
+});
+</script>
+
+</body>
+</html>

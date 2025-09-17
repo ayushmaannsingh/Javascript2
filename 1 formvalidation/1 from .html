@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Email & Password Validator</title>
+  <link rel="stylesheet" href="1 styles.css" />
+</head>
+<body>
+  <main class="container">
+    <form id="auth-form" novalidate aria-describedby="form-help">
+      <h1>Create account</h1>
+
+      <!-- EMAIL -->
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          aria-describedby="email-error"
+          required
+        />
+        <p class="error" id="email-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            placeholder="At least 8 characters"
+            aria-describedby="password-error password-reqs"
+            required
+          />
+          <button
+            type="button"
+            class="toggle-visibility"
+            id="togglePwd"
+            aria-label="Show password"
+            aria-pressed="false"
+          >
+            👁
+          </button>
+        </div>
+
+        <!-- Strength meter -->
+        <div class="strength" aria-hidden="true">
+          <span class="bar" data-level="1"></span>
+          <span class="bar" data-level="2"></span>
+          <span class="bar" data-level="3"></span>
+          <span class="bar" data-level="4"></span>
+        </div>
+
+        <ul id="password-reqs" class="reqs" aria-live="polite">
+          <li data-req="length">At least 8 characters</li>
+          <li data-req="uppercase">One uppercase letter (A–Z)</li>
+          <li data-req="number">One number (0–9)</li>
+          <li data-req="special">One special character (!@#$…)</li>
+        </ul>
+
+        <p class="error" id="password-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="field">
+        <label for="confirm">Confirm password</label>
+        <input
+          id="confirm"
+          name="confirm"
+          type="password"
+          autocomplete="new-password"
+          placeholder="Re-enter your password"
+          aria-describedby="confirm-error"
+          required
+        />
+        <p class="error" id="confirm-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <button id="submitBtn" type="submit" disabled>Create account</button>
+      <p id="form-help" class="muted">We’ll enable the button once everything looks valid.</p>
+    </form>
+  </main>
+
+  <!-- Your JS goes here -->
+  <script src="1 script.js" defer></script>
+</body>
+</html>
