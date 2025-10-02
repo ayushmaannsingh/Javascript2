@@ -27,6 +27,20 @@ const tea = createUser("tea", 250)
 chai.printMe()
 
 
+let arr1 = [1, 2, 3];
+let arr2 = [1, 2, 3];
+
+arr1.sayHello = () => {
+    console.log("hello!, i am arr");
+};
+
+arr2.sayHello = () => {
+    console.log("hello!, i am arr");
+};
+
+
+
+
 /*
 
 Here's what happens behind the scenes when the new keyword is used:
