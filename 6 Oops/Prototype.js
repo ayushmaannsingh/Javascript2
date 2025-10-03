@@ -1,5 +1,5 @@
-// let myName = "hitesh     "
-// let mychannel = "chai     "
+// let myName = "Ayush     "
+// let mychannel = "Singh     "
 
 // console.log(myName.trueLength);
 
@@ -21,7 +21,7 @@ Object.prototype.hitesh = function(){
 }
 
 Array.prototype.heyHitesh = function(){
-    console.log(`Hitesh says hello`);
+    console.log(`Hitesh says hello`); 
 }
 
 // heroPower.hitesh()
