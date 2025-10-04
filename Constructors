@@ -1,0 +1,14 @@
+# Constructors - doesn't return anything & start with capital
+
+function Person(name, age) {
+   this.name = name;
+   this.name = age;
+   console.log(this);
+}
+
+Person.prototype.talk = function(){
+  console.log(`Hi, my name is ${this.name}`);
+};
+
+let p1 = new Person("adam", 25);
+let p2 = new Person("ayush", 22);
