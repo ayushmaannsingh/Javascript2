@@ -8,3 +8,5 @@ talk() {
  }
 }
 
+let p1 = new Person("ayush", 25);
+let p2 = new Person("singh", 25);
