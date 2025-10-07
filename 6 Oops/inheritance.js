@@ -28,3 +28,18 @@ const masalaChai = new User("masalaChai")
 masalaChai.logMe()
 
 console.log(chai instanceof User);
+
+
+// Inheritance is a mechanism that allows us to create on the basis of already existing classes.
+
+class Student extends Person {
+    constructor (name, age, marks){
+        super(name, age);
+        this.marks = marks;
+    }  
+    greet() {
+        return "AYush";
+    }
+}
+
+    
