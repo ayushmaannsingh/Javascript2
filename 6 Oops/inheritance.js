@@ -42,4 +42,5 @@ class Student extends Person {
     }
 }
 
+let s1 = new Student("Ayush", 22, 94);
     
